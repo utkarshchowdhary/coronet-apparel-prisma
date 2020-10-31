@@ -4,6 +4,35 @@ type Query {
   getCollectionsByTitle(title: String): Collection!
 }
 
+type Mutation {
+  createCollection(data: CreateCollectionInput!): Collection!
+  deleteCollection: Collection!
+  updateCollection(data: UpdateCollectionInput): Collection!
+  createItem(data: CreateItemInput!): Item!
+  deleteItem(id: ID!): Item!
+  updateItem(id: ID!, data: UpdateItemInput): Item!
+}
+
+input CreateCollectionInput {
+  title: String!
+}
+
+input UpdateCollectionInput {
+  title: String
+}
+
+input CreateItemInput {
+  name: String!
+  imageUrl: String!
+  price: Float!
+}
+
+input UpdateItemInput {
+  name: String
+  imageUrl: String
+  price: Float
+}
+
 type Collection {
   id: ID!
   title: String!
