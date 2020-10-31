@@ -1,0 +1,17 @@
+type Collection {
+  id: ID!
+  title: String!
+  createdAt: String!
+  updatedAt: String!
+  items: [Item!]!
+}
+
+type Item {
+  id: ID!
+  name: String!
+  imageUrl: String!
+  price: Float!
+  createdAt: String!
+  updatedAt: String!
+  collection: Collection!
+}
