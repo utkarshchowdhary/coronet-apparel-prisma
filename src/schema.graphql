@@ -2,6 +2,8 @@ type Query {
   collections: [Collection!]!
   collection(id: ID!): Collection!
   getCollectionsByTitle(title: String): Collection!
+  items: [Item!]!
+  item(id: ID!): Item!
 }
 
 type Mutation {
