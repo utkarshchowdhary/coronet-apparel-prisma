@@ -1,3 +1,9 @@
+type Query {
+  collections: [Collection!]!
+  collection(id: ID!): Collection!
+  getCollectionsByTitle(title: String): Collection!
+}
+
 type Collection {
   id: ID!
   title: String!
