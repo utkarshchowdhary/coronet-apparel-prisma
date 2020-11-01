@@ -1,15 +1,15 @@
 type Query {
   collections: [Collection!]!
   collection(id: ID!): Collection!
-  getCollectionsByTitle(title: String): Collection!
+  getCollectionsByTitle(title: String!): Collection!
   items: [Item!]!
   item(id: ID!): Item!
 }
 
 type Mutation {
   createCollection(data: CreateCollectionInput!): Collection!
-  deleteCollection: Collection!
-  updateCollection(data: UpdateCollectionInput): Collection!
+  deleteCollection(id: ID!): Collection!
+  updateCollection(id: ID!, data: UpdateCollectionInput): Collection!
   createItem(data: CreateItemInput!): Item!
   deleteItem(id: ID!): Item!
   updateItem(id: ID!, data: UpdateItemInput): Item!
@@ -27,6 +27,7 @@ input CreateItemInput {
   name: String!
   imageUrl: String!
   price: Float!
+  collection: ID!
 }
 
 input UpdateItemInput {
