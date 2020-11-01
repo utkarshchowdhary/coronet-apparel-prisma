@@ -1,11 +1,18 @@
 const Query = {
   collections(parent, args, { prisma }) {
-    return prisma.collection.findMany();
+    return prisma.collection.findMany({
+      include: {
+        items: true,
+      },
+    });
   },
   async collection(parent, args, { prisma }) {
     const collection = await prisma.collection.findOne({
       where: {
         id: args.id,
+      },
+      include: {
+        items: true,
       },
     });
 
@@ -16,9 +23,12 @@ const Query = {
     return collection;
   },
   async getCollectionsByTitle(parent, args, { prisma }) {
-    const collection = await prisma.collection.findOne({
+    const collection = await prisma.collection.findFirst({
       where: {
         title: { equals: args.title, mode: 'insensitive' },
+      },
+      include: {
+        items: true,
       },
     });
 
@@ -29,12 +39,19 @@ const Query = {
     return collection;
   },
   items(parent, args, { prisma }) {
-    return prisma.item.findMany();
+    return prisma.item.findMany({
+      include: {
+        collection: true,
+      },
+    });
   },
   async item(parent, args, { prisma }) {
     const item = await prisma.item.findOne({
       where: {
         id: args.id,
+      },
+      include: {
+        collection: true,
       },
     });
 
