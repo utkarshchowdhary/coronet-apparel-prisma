@@ -1,6 +1,7 @@
 CREATE TABLE "public"."Collection" (
   "id" VARCHAR(25) PRIMARY KEY NOT NULL,
   "title" VARCHAR(255) UNIQUE NOT NULL,
+  "coverImage" VARCHAR(255) NOT NULL,
   "createdAt" TIMESTAMP NOT NULL DEFAULT now(),
   "updatedAt" TIMESTAMP NOT NULL
 );

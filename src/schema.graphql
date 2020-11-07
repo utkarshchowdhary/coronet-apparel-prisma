@@ -17,10 +17,12 @@ type Mutation {
 
 input CreateCollectionInput {
   title: String!
+  coverImage: String!
 }
 
 input UpdateCollectionInput {
   title: String
+  coverImage: String
 }
 
 input CreateItemInput {
@@ -39,6 +41,7 @@ input UpdateItemInput {
 type Collection {
   id: ID!
   title: String!
+  coverImage: String!
   createdAt: String!
   updatedAt: String!
   items: [Item!]!
